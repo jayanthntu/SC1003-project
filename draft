@@ -1,0 +1,38 @@
+120 tutorial groups × 50 students each.
+
+
+Each team must have 5 students → 10 teams per tutorial group.
+
+
+Teams must be formed within the same tutorial group (no cross-group mixing).
+
+
+Teams should be balanced and diverse:
+
+
+School Affiliation: No majority (≥3) from same school.
+
+
+Gender: No majority of same gender.
+
+
+CGPA: Balanced (avoid all high or all low CGPAs)
+import pandas as pd (part of python library which helps work with excel sheets and data)
+import random (to randomize order of students) 
+from collections import Counter (counter is used to count how many times each value appears in list) 
+
+Def new_team (team, new_student):
+Temp_team = team + new_student
+ schools = [s['School'] for s in temp_team]
+    genders = [s['Gender'] for s in temp_team]
+    
+    school_count = Counter(schools)
+    gender_count = Counter(genders)  # to check the value 
+
+  # No more than 2 of same school/gender in a 5-person team
+    if max(school_count.values()) > 3:
+        return False
+    if max(gender_count.values()) > 3:
+        return False
+    
+    return True
